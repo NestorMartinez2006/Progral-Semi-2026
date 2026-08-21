@@ -34,8 +34,7 @@
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Size = new System.Drawing.Size(100, 22);
             this.txtSerie.TabIndex = 0;
-            this.txtSerie.TextChanged += new System.EventHandler(this.txtSerie_TextChanged);
-            // 
+          
             // btnProcesar
             // 
             this.btnProcesar.Location = new System.Drawing.Point(277, 302);
