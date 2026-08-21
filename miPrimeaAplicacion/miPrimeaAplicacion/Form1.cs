@@ -17,7 +17,7 @@ namespace miPrimeaAplicacion
             InitializeComponent();
         }
 
-        private void txtSerie_TextChanged(object sender, EventArgs e)
+        private void btnProcesar_Click(object sender, EventArgs e)
         {
             String[] serie = txtSerie.Text.Split(',');
             double[] miSerie = serie.Select(n => double.Parse(n)).ToArray();
@@ -28,8 +28,6 @@ namespace miPrimeaAplicacion
             }
             double media = suma / miSerie.Length;
             ltsValores.Items.Add("La media es: " + media);
-        
-
-    }
+        }
     }
 }
