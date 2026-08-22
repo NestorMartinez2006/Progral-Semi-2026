@@ -32,4 +32,4 @@ namespace miPrimeaAplicacion
     }
 }
 
-//actualizacion
+//actualizacion por este comentario le informo que por accidente subi dos commit de forma manual ya que tambien tengo unos errores de sincronizacion entre git hud y vs pero este es el archivo que responde por ese commit
