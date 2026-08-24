@@ -12,22 +12,31 @@ namespace miPrimeaAplicacion
             InitializeComponent();
         }
 
-        // Función para calcular la media aritmética
         private double media(double[] serie)
         {
             return serie.Average();
         }
 
-        // Función para calcular la desviación típica
         private double desviacionTipica(double[] serie, double media)
         {
             return Math.Sqrt(serie.Average(n => Math.Pow(n - media, 2)));
         }
 
-        // Función para calcular la media armónica
         private double armonica(double[] serie)
         {
             return serie.Length / serie.Sum(x => 1 / x);
+        }
+
+       
+        private double varianza(double[] serie, double media)
+        {
+            double sumaCuadrados = 0;
+            for (int i = 0; i < serie.Length; i++)
+            {
+                sumaCuadrados += Math.Pow(serie[i], 2);
+            }
+            double varianza = (sumaCuadrados / serie.Length) - Math.Pow(media, 2);
+            return varianza;
         }
 
         private void btnProcesar_Click(object sender, EventArgs e)
@@ -36,7 +45,6 @@ namespace miPrimeaAplicacion
 
             if (string.IsNullOrWhiteSpace(txtSerie.Text)) return;
 
-            // Convierte el texto separado por comas a un arreglo de números
             double[] miSerie = txtSerie.Text.Split(',')
                                            .Select(n => double.Parse(n.Trim()))
                                            .ToArray();
@@ -46,6 +54,7 @@ namespace miPrimeaAplicacion
             ltsValores.Items.Add("La media es: " + m);
             ltsValores.Items.Add("La desviacion tipica: " + desviacionTipica(miSerie, m));
             ltsValores.Items.Add("La media armonica: " + armonica(miSerie));
+            ltsValores.Items.Add("La desviacion estandar es: " + varianza(miSerie, m));
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -59,4 +68,3 @@ namespace miPrimeaAplicacion
         }
     }
 }
-
