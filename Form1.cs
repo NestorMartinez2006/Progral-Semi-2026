@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
-namespace miPrimeaAplicacion
+namespace Calculo_Deducciones
 {
     public partial class Form1 : Form
     {
@@ -12,59 +10,123 @@ namespace miPrimeaAplicacion
             InitializeComponent();
         }
 
-        private double media(double[] serie)
+        private void btnCalcular_Click(object sender, EventArgs e)
         {
-            return serie.Average();
-        }
+            decimal sueldo;
 
-        private double desviacionTipica(double[] serie, double media)
-        {
-            return Math.Sqrt(serie.Average(n => Math.Pow(n - media, 2)));
-        }
 
-        private double armonica(double[] serie)
-        {
-            return serie.Length / serie.Sum(x => 1 / x);
-        }
-
-       
-        private double varianza(double[] serie, double media)
-        {
-            double sumaCuadrados = 0;
-            for (int i = 0; i < serie.Length; i++)
+            if (!decimal.TryParse(txtSueldo.Text, out sueldo))
             {
-                sumaCuadrados += Math.Pow(serie[i], 2);
+                MessageBox.Show(
+                    "Ingrese un sueldo válido.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+
+                txtSueldo.Focus();
+                return;
             }
-            double varianza = (sumaCuadrados / serie.Length) - Math.Pow(media, 2);
-            return varianza;
+
+
+            if (sueldo <= 0)
+            {
+                MessageBox.Show(
+                    "El sueldo debe ser mayor que cero.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+
+                txtSueldo.Focus();
+                return;
+            }
+
+
+
+            decimal baseISSS = sueldo;
+
+
+            if (baseISSS > 1000)
+            {
+                baseISSS = 1000;
+            }
+
+            decimal isss = baseISSS * 0.03m;
+
+
+
+
+            decimal afp = sueldo * 0.0725m;
+
+
+
+
+            decimal salarioGravable = sueldo - isss - afp;
+
+
+
+
+            decimal isr = CalcularISR(salarioGravable);
+
+
+
+
+            decimal totalDeducciones = isss + afp + isr;
+
+
+
+            decimal sueldoLiquido = sueldo - totalDeducciones;
+
+
+
+            txtISSS.Text = isss.ToString("C2");
+            txtAFP.Text = afp.ToString("C2");
+            txtGravable.Text = salarioGravable.ToString("C2");
+            txtISR.Text = isr.ToString("C2");
+            txtTotal.Text = totalDeducciones.ToString("C2");
+            txtLiquido.Text = sueldoLiquido.ToString("C2");
         }
 
-        private void btnProcesar_Click(object sender, EventArgs e)
+
+
+        private decimal CalcularISR(decimal salario)
         {
-            limpiar();
+            decimal isr = 0;
 
-            if (string.IsNullOrWhiteSpace(txtSerie.Text)) return;
+            if (salario <= 472.00m)
+            {
+                isr = 0;
+            }
+            else if (salario <= 895.24m)
+            {
+                isr = 17.67m + ((salario - 472.00m) * 0.10m);
+            }
+            else if (salario <= 2038.10m)
+            {
+                isr = 60.00m + ((salario - 895.24m) * 0.20m);
+            }
+            else
+            {
+                isr = 288.57m + ((salario - 2038.10m) * 0.30m);
+            }
 
-            double[] miSerie = txtSerie.Text.Split(',')
-                                           .Select(n => double.Parse(n.Trim()))
-                                           .ToArray();
-
-            double m = media(miSerie);
-
-            ltsValores.Items.Add("La media es: " + m);
-            ltsValores.Items.Add("La desviacion tipica: " + desviacionTipica(miSerie, m));
-            ltsValores.Items.Add("La media armonica: " + armonica(miSerie));
-            ltsValores.Items.Add("La desviacion estandar es: " + varianza(miSerie, m));
+            return isr;
         }
+
+
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            limpiar();
-        }
+            txtSueldo.Clear();
+            txtISSS.Clear();
+            txtAFP.Clear();
+            txtGravable.Clear();
+            txtISR.Clear();
+            txtTotal.Clear();
+            txtLiquido.Clear();
 
-        private void limpiar()
-        {
-            ltsValores.Items.Clear();
+            txtSueldo.Focus();
         }
     }
 }
