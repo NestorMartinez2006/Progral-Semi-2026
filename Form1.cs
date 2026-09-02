@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Calculo_Meses
+namespace Consumo_De_Agua
 {
     public partial class Form1 : Form
     {
@@ -10,34 +10,56 @@ namespace Calculo_Meses
             InitializeComponent();
         }
 
-        private void btnGenerar_Click(object sender, EventArgs e)
+        private void btnCalcular_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtMeses.Text, out int nMeses) || nMeses <= 0)
+            if (!double.TryParse(txtConsumo.Text, out double metros) || metros < 0)
             {
-                MessageBox.Show("Por favor, ingrese un número entero mayor a 0 para los meses.",
+                MessageBox.Show("Ingrese una cantidad válida de metros cúbicos.",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMeses.Focus();
+                txtConsumo.Focus();
                 return;
             }
 
-            double.TryParse(txtMontoMensual.Text, out double montoMensual);
+            // Determinar Rango y Total a pagar
+            string rango = "";
+            double total = 0;
 
-            dgvTabla.Rows.Clear();
-            double acumulado = 0;
-
-            for (int i = 1; i <= nMeses; i++)
+            if (metros <= 10)
             {
-                acumulado += montoMensual;
-                dgvTabla.Rows.Add(i, $"${montoMensual:F2}", $"${acumulado:F2}");
+                rango = "0 - 10 m³";
+                total = 5.00;
             }
+            else if (metros <= 20)
+            {
+                rango = "11 - 20 m³";
+                total = 5.00 + ((metros - 10) * 0.35);
+            }
+            else if (metros <= 30)
+            {
+                rango = "21 - 30 m³";
+                total = 5.00 + (10 * 0.35) + ((metros - 20) * 0.50);
+            }
+            else if (metros <= 40)
+            {
+                rango = "31 - 40 m³";
+                total = 5.00 + (10 * 0.35) + (10 * 0.50) + ((metros - 30) * 0.88);
+            }
+            else
+            {
+                rango = "Más de 40 m³";
+                total = 5.00 + (10 * 0.35) + (10 * 0.50) + (10 * 0.88) + ((metros - 40) * 1.20);
+            }
+
+            txtRango.Text = rango;
+            txtTotal.Text = $"${total:F2}";
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
-            txtMeses.Clear();
-            txtMontoMensual.Clear();
-            dgvTabla.Rows.Clear();
-            txtMeses.Focus();
+            txtConsumo.Clear();
+            txtRango.Clear();
+            txtTotal.Clear();
+            txtConsumo.Focus();
         }
     }
 }
