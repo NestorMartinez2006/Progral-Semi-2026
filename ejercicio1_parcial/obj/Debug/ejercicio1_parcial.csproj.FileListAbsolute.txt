@@ -1,0 +1,9 @@
+C:\Users\Nestor\Desktop\Progra I\ejercicio1_parcial\bin\Debug\ejercicio1_parcial.exe.config
+C:\Users\Nestor\Desktop\Progra I\ejercicio1_parcial\bin\Debug\ejercicio1_parcial.exe
+C:\Users\Nestor\Desktop\Progra I\ejercicio1_parcial\bin\Debug\ejercicio1_parcial.pdb
+C:\Users\Nestor\Desktop\Progra I\ejercicio1_parcial\obj\Debug\ejercicio1_parcial.csproj.AssemblyReference.cache
+C:\Users\Nestor\Desktop\Progra I\ejercicio1_parcial\obj\Debug\ejercicio1_parcial.Properties.Resources.resources
+C:\Users\Nestor\Desktop\Progra I\ejercicio1_parcial\obj\Debug\ejercicio1_parcial.csproj.GenerateResource.cache
+C:\Users\Nestor\Desktop\Progra I\ejercicio1_parcial\obj\Debug\ejercicio1_parcial.csproj.CoreCompileInputs.cache
+C:\Users\Nestor\Desktop\Progra I\ejercicio1_parcial\obj\Debug\ejercicio1_parcial.exe
+C:\Users\Nestor\Desktop\Progra I\ejercicio1_parcial\obj\Debug\ejercicio1_parcial.pdb

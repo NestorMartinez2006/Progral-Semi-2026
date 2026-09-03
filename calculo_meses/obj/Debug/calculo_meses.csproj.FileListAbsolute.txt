@@ -1,0 +1,9 @@
+C:\Users\Nestor\Desktop\Progra I\calculo_meses\bin\Debug\calculo_meses.exe.config
+C:\Users\Nestor\Desktop\Progra I\calculo_meses\bin\Debug\calculo_meses.exe
+C:\Users\Nestor\Desktop\Progra I\calculo_meses\bin\Debug\calculo_meses.pdb
+C:\Users\Nestor\Desktop\Progra I\calculo_meses\obj\Debug\calculo_meses.csproj.AssemblyReference.cache
+C:\Users\Nestor\Desktop\Progra I\calculo_meses\obj\Debug\calculo_meses.Properties.Resources.resources
+C:\Users\Nestor\Desktop\Progra I\calculo_meses\obj\Debug\calculo_meses.csproj.GenerateResource.cache
+C:\Users\Nestor\Desktop\Progra I\calculo_meses\obj\Debug\calculo_meses.csproj.CoreCompileInputs.cache
+C:\Users\Nestor\Desktop\Progra I\calculo_meses\obj\Debug\calculo_meses.exe
+C:\Users\Nestor\Desktop\Progra I\calculo_meses\obj\Debug\calculo_meses.pdb

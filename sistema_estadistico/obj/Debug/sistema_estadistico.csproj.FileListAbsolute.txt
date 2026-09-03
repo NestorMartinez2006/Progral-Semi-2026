@@ -1,0 +1,10 @@
+C:\Users\Nestor\Desktop\Progra I\sistema_estadistico\bin\Debug\sistema_estadistico.exe.config
+C:\Users\Nestor\Desktop\Progra I\sistema_estadistico\bin\Debug\sistema_estadistico.exe
+C:\Users\Nestor\Desktop\Progra I\sistema_estadistico\bin\Debug\sistema_estadistico.pdb
+C:\Users\Nestor\Desktop\Progra I\sistema_estadistico\obj\Debug\sistema_estadistico.csproj.AssemblyReference.cache
+C:\Users\Nestor\Desktop\Progra I\sistema_estadistico\obj\Debug\SistemaEstadistico.FormEstadistica.resources
+C:\Users\Nestor\Desktop\Progra I\sistema_estadistico\obj\Debug\sistema_estadistico.Properties.Resources.resources
+C:\Users\Nestor\Desktop\Progra I\sistema_estadistico\obj\Debug\sistema_estadistico.csproj.GenerateResource.cache
+C:\Users\Nestor\Desktop\Progra I\sistema_estadistico\obj\Debug\sistema_estadistico.csproj.CoreCompileInputs.cache
+C:\Users\Nestor\Desktop\Progra I\sistema_estadistico\obj\Debug\sistema_estadistico.exe
+C:\Users\Nestor\Desktop\Progra I\sistema_estadistico\obj\Debug\sistema_estadistico.pdb

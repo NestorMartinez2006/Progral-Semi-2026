@@ -1,0 +1,9 @@
+C:\Users\Nestor\Desktop\Progra I\consumo_de_agua\bin\Debug\consumo_de_agua.exe.config
+C:\Users\Nestor\Desktop\Progra I\consumo_de_agua\bin\Debug\consumo_de_agua.exe
+C:\Users\Nestor\Desktop\Progra I\consumo_de_agua\bin\Debug\consumo_de_agua.pdb
+C:\Users\Nestor\Desktop\Progra I\consumo_de_agua\obj\Debug\consumo_de_agua.csproj.AssemblyReference.cache
+C:\Users\Nestor\Desktop\Progra I\consumo_de_agua\obj\Debug\consumo_de_agua.Properties.Resources.resources
+C:\Users\Nestor\Desktop\Progra I\consumo_de_agua\obj\Debug\consumo_de_agua.csproj.GenerateResource.cache
+C:\Users\Nestor\Desktop\Progra I\consumo_de_agua\obj\Debug\consumo_de_agua.csproj.CoreCompileInputs.cache
+C:\Users\Nestor\Desktop\Progra I\consumo_de_agua\obj\Debug\consumo_de_agua.exe
+C:\Users\Nestor\Desktop\Progra I\consumo_de_agua\obj\Debug\consumo_de_agua.pdb

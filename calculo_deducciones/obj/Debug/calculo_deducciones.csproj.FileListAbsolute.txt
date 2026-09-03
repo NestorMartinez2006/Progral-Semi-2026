@@ -1,0 +1,9 @@
+C:\Users\Nestor\Desktop\Progra I\calculo_deducciones\obj\Debug\calculo_deducciones.csproj.AssemblyReference.cache
+C:\Users\Nestor\Desktop\Progra I\calculo_deducciones\obj\Debug\calculo_deducciones.Properties.Resources.resources
+C:\Users\Nestor\Desktop\Progra I\calculo_deducciones\obj\Debug\calculo_deducciones.csproj.GenerateResource.cache
+C:\Users\Nestor\Desktop\Progra I\calculo_deducciones\obj\Debug\calculo_deducciones.csproj.CoreCompileInputs.cache
+C:\Users\Nestor\Desktop\Progra I\calculo_deducciones\bin\Debug\calculo_deducciones.exe.config
+C:\Users\Nestor\Desktop\Progra I\calculo_deducciones\bin\Debug\calculo_deducciones.exe
+C:\Users\Nestor\Desktop\Progra I\calculo_deducciones\bin\Debug\calculo_deducciones.pdb
+C:\Users\Nestor\Desktop\Progra I\calculo_deducciones\obj\Debug\calculo_deducciones.exe
+C:\Users\Nestor\Desktop\Progra I\calculo_deducciones\obj\Debug\calculo_deducciones.pdb
