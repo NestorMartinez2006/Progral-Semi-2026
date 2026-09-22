@@ -107,5 +107,25 @@ namespace miPrimeaAplicacion
                 cboA.Items.AddRange(etiquetas[opcion]);
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDireccionAlumno_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAnteriorAlumno_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
