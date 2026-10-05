@@ -41,6 +41,7 @@ namespace miPrimeaAplicacion
         {
             if (objDt.Rows.Count > 0 && posicion < objDt.Rows.Count)
             {
+                
                 idAlumno.Text = objDt.Rows[posicion]["idAlumnos"].ToString();
                 txtCodigoAlumno.Text = objDt.Rows[posicion]["código"].ToString();
                 txtNombreAlumno.Text = objDt.Rows[posicion]["nombre"].ToString();
@@ -240,6 +241,11 @@ namespace miPrimeaAplicacion
         private void grdAlumnos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             seleccionarAlumno();
+        }
+
+        private void grbDatosAlumno_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
