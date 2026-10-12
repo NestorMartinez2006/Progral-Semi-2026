@@ -38,10 +38,12 @@ namespace miPrimeaAplicacion
                 if (objDs.Tables.Contains("periodos"))
                 {
                     objDt = objDs.Tables["periodos"];
+
                     if (objDt.Columns.Count > 0)
                     {
                         objDt.PrimaryKey = new DataColumn[] { objDt.Columns[0] };
                     }
+
                     grdPeriodos.DataSource = objDt.DefaultView;
                     mostrarDatos();
                 }
@@ -61,9 +63,15 @@ namespace miPrimeaAplicacion
             }
             else
             {
-                txtPeriodo.Clear();
+                limpiarCampos();
                 lblRegistros.Text = "0 de 0";
             }
+        }
+
+        private void limpiarCampos()
+        {
+            txtPeriodo.Clear();
+            txtPeriodo.Focus();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -74,8 +82,7 @@ namespace miPrimeaAplicacion
                 btnNuevo.Text = "Guardar";
                 btnModificar.Text = "Cancelar";
                 btnEliminar.Enabled = false;
-                txtPeriodo.Clear();
-                txtPeriodo.Focus();
+                limpiarCampos();
             }
             else
             {

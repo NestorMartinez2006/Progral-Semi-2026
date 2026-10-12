@@ -59,7 +59,7 @@ namespace miPrimeAplicacion
         {
             if (objDt != null && objDt.Rows.Count > 0)
             {
-                txtCodigo.Text = objDt.Rows[posicion]["codigo"].ToString();
+                txtCodigo.Text = objDt.Rows[posicion]["código"].ToString();
                 txtNombre.Text = objDt.Rows[posicion]["nombre"].ToString();
                 txtUV.Text = objDt.Rows[posicion]["uv"].ToString();
 
@@ -196,7 +196,7 @@ namespace miPrimeAplicacion
         {
             if (objDt != null)
             {
-                objDt.DefaultView.RowFilter = "codigo LIKE '%" + txtBuscar.Text + "%' OR nombre LIKE '%" + txtBuscar.Text + "%'";
+                objDt.DefaultView.RowFilter = "código LIKE '%" + txtBuscar.Text + "%' OR nombre LIKE '%" + txtBuscar.Text + "%'";
             }
         }
 

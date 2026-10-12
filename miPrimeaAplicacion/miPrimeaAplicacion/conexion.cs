@@ -81,11 +81,11 @@ namespace miPrimeaAplicacion
             String sql = "";
             if (accion == "nuevo")
             {
-                sql = "INSERT INTO materias(codigo,nombre,uv) VALUES ('" + datos[1] + "', '" + datos[2] + "', '" + datos[3] + "')";
+                sql = "INSERT INTO materias([código], nombre, uv) VALUES ('" + datos[1] + "', '" + datos[2] + "', '" + datos[3] + "')";
             }
             else if (accion == "modificar")
             {
-                sql = "UPDATE materias SET codigo='" + datos[1] + "', nombre='" + datos[2] + "', uv='" + datos[3] + "' WHERE idMateria=" + datos[0];
+                sql = "UPDATE materias SET [código]='" + datos[1] + "', nombre='" + datos[2] + "', uv='" + datos[3] + "' WHERE idMateria=" + datos[0];
             }
             else if (accion == "eliminar")
             {
@@ -99,7 +99,8 @@ namespace miPrimeaAplicacion
             String sql = "";
             if (accion == "nuevo")
             {
-                sql = "INSERT INTO periodos(periodo) VALUES ('" + datos[1] + "')";
+                // CORRECCIÓN: Se incluye la columna fecha con GETDATE() para evitar el error de valor NULL
+                sql = "INSERT INTO periodos(periodo, fecha) VALUES ('" + datos[1] + "', GETDATE())";
             }
             else if (accion == "modificar")
             {
