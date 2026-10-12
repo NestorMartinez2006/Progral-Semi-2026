@@ -30,18 +30,48 @@ namespace miPrimeaAplicacion
             objDs = objCOnexion.obtenerDatos();
             objDt = objDs.Tables["alumnos"];
 
-            // Llave primaria alineada con la BD
             objDt.PrimaryKey = new DataColumn[] { objDt.Columns["idAlumnos"] };
+
+            
+            configurarColumnasGrid();
 
             grdAlumnos.DataSource = objDt.DefaultView;
             mostrarDatos();
         }
 
-        private void mostrarDatos()
+      
+        private void configurarColumnasGrid()
         {
-            if (objDt.Rows.Count > 0 && posicion < objDt.Rows.Count)
+            try
             {
                 
+                if (grdAlumnos.Columns.Contains("idAlumnos"))
+                    grdAlumnos.Columns["idAlumnos"].DataPropertyName = "idAlumnos";
+
+                if (grdAlumnos.Columns.Contains("código"))
+                    grdAlumnos.Columns["código"].DataPropertyName = "código";
+                else if (grdAlumnos.Columns.Contains("codigo"))
+                    grdAlumnos.Columns["codigo"].DataPropertyName = "código";
+
+                if (grdAlumnos.Columns.Contains("nombre"))
+                    grdAlumnos.Columns["nombre"].DataPropertyName = "nombre";
+
+                if (grdAlumnos.Columns.Contains("direccion"))
+                    grdAlumnos.Columns["direccion"].DataPropertyName = "direccion";
+
+                if (grdAlumnos.Columns.Contains("telefono"))
+                    grdAlumnos.Columns["telefono"].DataPropertyName = "telefono";
+            }
+            catch
+            {
+                
+            }
+        }
+
+        private void mostrarDatos()
+        {
+            if (objDt.Rows.Count > 0 && posicion >= 0 && posicion < objDt.Rows.Count)
+            {
                 idAlumno.Text = objDt.Rows[posicion]["idAlumnos"].ToString();
                 txtCodigoAlumno.Text = objDt.Rows[posicion]["código"].ToString();
                 txtNombreAlumno.Text = objDt.Rows[posicion]["nombre"].ToString();
@@ -203,7 +233,10 @@ namespace miPrimeaAplicacion
             try
             {
                 DataView objDv = objDt.DefaultView;
-                objDv.RowFilter = "codigo like '%" + valor + "%' OR nombre like '%" + valor + "%'";
+
+                
+                objDv.RowFilter = "código like '%" + valor + "%' OR nombre like '%" + valor + "%'";
+
                 grdAlumnos.DataSource = objDv;
                 seleccionarAlumno();
             }
@@ -222,14 +255,25 @@ namespace miPrimeaAplicacion
                     return;
                 }
 
-                // Obtener el ID desde la columna 'idAlumnos' de la tabla/grid
-                string id = grdAlumnos.CurrentRow.Cells["idAlumnos"].Value.ToString();
+                string id = "";
 
-                DataRow dr = objDt.Rows.Find(id);
-                if (dr != null)
+                if (grdAlumnos.Columns.Contains("idAlumnos") && grdAlumnos.CurrentRow.Cells["idAlumnos"].Value != null)
                 {
-                    posicion = objDt.Rows.IndexOf(dr);
-                    mostrarDatos();
+                    id = grdAlumnos.CurrentRow.Cells["idAlumnos"].Value.ToString();
+                }
+                else if (grdAlumnos.CurrentRow.Cells[0].Value != null)
+                {
+                    id = grdAlumnos.CurrentRow.Cells[0].Value.ToString();
+                }
+
+                if (!string.IsNullOrEmpty(id))
+                {
+                    DataRow dr = objDt.Rows.Find(id);
+                    if (dr != null)
+                    {
+                        posicion = objDt.Rows.IndexOf(dr);
+                        mostrarDatos();
+                    }
                 }
             }
             catch (Exception e)
