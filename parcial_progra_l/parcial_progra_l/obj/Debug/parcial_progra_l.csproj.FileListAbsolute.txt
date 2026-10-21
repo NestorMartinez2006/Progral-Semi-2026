@@ -1,0 +1,10 @@
+C:\Users\Nestor\Desktop\Progra I\parcial_progra_l\parcial_progra_l\bin\Debug\parcial_progra_l.exe.config
+C:\Users\Nestor\Desktop\Progra I\parcial_progra_l\parcial_progra_l\bin\Debug\parcial_progra_l.exe
+C:\Users\Nestor\Desktop\Progra I\parcial_progra_l\parcial_progra_l\bin\Debug\parcial_progra_l.pdb
+C:\Users\Nestor\Desktop\Progra I\parcial_progra_l\parcial_progra_l\obj\Debug\parcial_progra_l.csproj.AssemblyReference.cache
+C:\Users\Nestor\Desktop\Progra I\parcial_progra_l\parcial_progra_l\obj\Debug\parcial_progra_l.Form1.resources
+C:\Users\Nestor\Desktop\Progra I\parcial_progra_l\parcial_progra_l\obj\Debug\parcial_progra_l.Properties.Resources.resources
+C:\Users\Nestor\Desktop\Progra I\parcial_progra_l\parcial_progra_l\obj\Debug\parcial_progra_l.csproj.GenerateResource.cache
+C:\Users\Nestor\Desktop\Progra I\parcial_progra_l\parcial_progra_l\obj\Debug\parcial_progra_l.csproj.CoreCompileInputs.cache
+C:\Users\Nestor\Desktop\Progra I\parcial_progra_l\parcial_progra_l\obj\Debug\parcial_progra_l.exe
+C:\Users\Nestor\Desktop\Progra I\parcial_progra_l\parcial_progra_l\obj\Debug\parcial_progra_l.pdb
