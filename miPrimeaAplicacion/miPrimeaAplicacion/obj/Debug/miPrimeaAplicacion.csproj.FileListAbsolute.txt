@@ -39,3 +39,4 @@ C:\Users\Nestor\Desktop\Progra I\miPrimeaAplicacion\miPrimeaAplicacion\obj\Debug
 C:\Users\Nestor\Desktop\Progra I\miPrimeaAplicacion\miPrimeaAplicacion\obj\Debug\miPrimeaAplicacion.exe
 C:\Users\Nestor\Desktop\Progra I\miPrimeaAplicacion\miPrimeaAplicacion\obj\Debug\miPrimeaAplicacion.pdb
 C:\Users\Nestor\Desktop\Progra I\miPrimeaAplicacion\miPrimeaAplicacion\obj\Debug\miPrimeaAplicacion.frmPrincipal.resources
+C:\Users\Nestor\Desktop\Progra I\miPrimeaAplicacion\miPrimeaAplicacion\obj\Debug\miPrimeaAplicacion.frm_usuario.resources

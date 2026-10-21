@@ -57,12 +57,50 @@ namespace miPrimeaAplicacion
             return objDs;
         }
 
+        // ==========================================
+        // MÉTODOS REQUERIDOS PARA EL PARCIAL (USUARIOS)[cite: 1]
+        // ==========================================
+
+        public DataSet crearDsUsuarios()
+        {
+            objDs.Clear();
+            objComando.Connection = objConexion;
+            objDataAdapter.SelectCommand = objComando;
+
+            // Carga la tabla de usuarios con tu código de estudiante[cite: 1]
+            objComando.CommandText = "SELECT * FROM usuarios_USSS016526";
+            objDataAdapter.Fill(objDs, "usuarios");
+
+            return objDs;
+        }
+
+        public string mantenimiento_usuarios_USSS016526(String[] datos, String accion)
+        {
+            String sql = "";
+            if (accion == "nuevo")
+            {
+                sql = "INSERT INTO usuarios_USSS016526 (usuario, clave, nombre, dirección, teléfono) VALUES ('" + datos[0] + "', '" + datos[1] + "', '" + datos[2] + "', '" + datos[3] + "', '" + datos[4] + "')";
+            }
+            else if (accion == "modificar")
+            {
+                sql = "UPDATE usuarios_USSS016526 SET usuario='" + datos[0] + "', clave='" + datos[1] + "', nombre='" + datos[2] + "', dirección='" + datos[3] + "', teléfono='" + datos[4] + "' WHERE idUsuario=" + datos[5];
+            }
+            else if (accion == "eliminar")
+            {
+                sql = "DELETE FROM usuarios_USSS016526 WHERE idUsuario=" + datos[5];
+            }
+            return ejecutarSQL(sql);
+        }
+
+        // ==========================================
+        // MÉTODOS EXISTENTES DE MANTENIMIENTO
+        // ==========================================
+
         public string administrarDatosAlumnos(String[] datos, String accion)
         {
             String sql = "";
             if (accion == "nuevo")
             {
-                // Encorchetamos [código] para evitar errores de sintaxis/reconocimiento con caracteres especiales
                 sql = "INSERT INTO alumnos ([código], nombre, direccion, telefono, email) VALUES ('" + datos[1] + "', '" + datos[2] + "', '" + datos[3] + "', '" + datos[4] + "', '')";
             }
             else if (accion == "modificar")
@@ -99,7 +137,6 @@ namespace miPrimeaAplicacion
             String sql = "";
             if (accion == "nuevo")
             {
-                // CORRECCIÓN: Se incluye la columna fecha con GETDATE() para evitar el error de valor NULL
                 sql = "INSERT INTO periodos(periodo, fecha) VALUES ('" + datos[1] + "', GETDATE())";
             }
             else if (accion == "modificar")
