@@ -4,14 +4,6 @@
     "title": "WebApp | v1",
     "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "https://localhost:7237"
-    },
-    {
-      "url": "http://localhost:5209"
-    }
-  ],
   "paths": {
     "/WeatherForecast": {
       "get": {
