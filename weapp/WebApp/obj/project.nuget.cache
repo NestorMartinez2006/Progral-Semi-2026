@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "Nky3RCdLrQ0=",
-  "success": false,
+  "dgSpecHash": "dweQUQ1i5as=",
+  "success": true,
   "projectFilePath": "C:\\Users\\Nestor\\Desktop\\Progra I\\weapp\\WebApp\\WebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nestor\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
@@ -18,9 +18,9 @@
     "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.codeanalysis.workspaces.msbuild\\5.0.0\\microsoft.codeanalysis.workspaces.msbuild.5.0.0.nupkg.sha512",
     "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.data.sqlclient\\6.1.7\\microsoft.data.sqlclient.6.1.7.nupkg.sha512",
     "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\6.0.3\\microsoft.data.sqlclient.sni.runtime.6.0.3.nupkg.sha512",
-    "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.13\\microsoft.entityframeworkcore.10.0.13.nupkg.sha512",
-    "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.13\\microsoft.entityframeworkcore.abstractions.10.0.13.nupkg.sha512",
-    "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.13\\microsoft.entityframeworkcore.analyzers.10.0.13.nupkg.sha512",
+    "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.14\\microsoft.entityframeworkcore.10.0.14.nupkg.sha512",
+    "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.14\\microsoft.entityframeworkcore.abstractions.10.0.14.nupkg.sha512",
+    "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.14\\microsoft.entityframeworkcore.analyzers.10.0.14.nupkg.sha512",
     "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.entityframeworkcore.design\\10.0.14\\microsoft.entityframeworkcore.design.10.0.14.nupkg.sha512",
     "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.14\\microsoft.entityframeworkcore.relational.10.0.14.nupkg.sha512",
     "C:\\Users\\Nestor\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\10.0.14\\microsoft.entityframeworkcore.sqlserver.10.0.14.nupkg.sha512",
@@ -76,17 +76,6 @@
       "warningLevel": 1,
       "filePath": "C:\\Users\\Nestor\\Desktop\\Progra I\\weapp\\WebApp\\WebApp.csproj",
       "libraryId": "System.Security.Cryptography.Pkcs",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Advertencia como error: Degradación del paquete detectada: Microsoft.EntityFrameworkCore de 10.0.14 a 10.0.13. Haga referencia al paquete directamente desde el proyecto para seleccionar una versión diferente. \r\n WebApp -> Microsoft.EntityFrameworkCore.SqlServer 10.0.14 -> Microsoft.EntityFrameworkCore.Relational 10.0.14 -> Microsoft.EntityFrameworkCore (>= 10.0.14) \r\n WebApp -> Microsoft.EntityFrameworkCore (>= 10.0.13)",
-      "projectPath": "C:\\Users\\Nestor\\Desktop\\Progra I\\weapp\\WebApp\\WebApp.csproj",
-      "filePath": "C:\\Users\\Nestor\\Desktop\\Progra I\\weapp\\WebApp\\WebApp.csproj",
-      "libraryId": "Microsoft.EntityFrameworkCore",
       "targetGraphs": [
         "net10.0"
       ]
