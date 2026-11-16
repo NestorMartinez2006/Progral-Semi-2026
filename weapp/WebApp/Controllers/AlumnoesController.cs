@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webapp.Models;
-using WebApp.Models;
+namespace WebApp.Models;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -74,7 +74,7 @@ public class AlumnosController : ControllerBase
             }
         }
 
-        return NoContent();
+        return CreatedAtAction("GetAlumno", new { idalumno = alumno.idAlumno }, alumno);
     }
 
     // POST: api/Alumno

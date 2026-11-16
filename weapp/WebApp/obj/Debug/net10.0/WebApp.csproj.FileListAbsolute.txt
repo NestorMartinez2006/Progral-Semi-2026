@@ -94,7 +94,6 @@ C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\hqdqs
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\21v84855wg-{0}-4fcuk893dc-4fcuk893dc.gz
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\ipson6xxd0-{0}-lvkpp2i49p-lvkpp2i49p.gz
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\lnjkypxe0o-{0}-scyj3pnqhf-scyj3pnqhf.gz
-C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\qfdz7oa465-{0}-r25wy8kzfd-r25wy8kzfd.gz
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\bin\Debug\net10.0\Humanizer.dll
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\bin\Debug\net10.0\Microsoft.Build.Framework.dll
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\bin\Debug\net10.0\Microsoft.CodeAnalysis.dll
@@ -179,6 +178,7 @@ C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\bin\Debug\net10.0\ru\Microsoft.Cod
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
-C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\q9q0gic0ss-{0}-jmyx31p497-jmyx31p497.gz
-C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\vpqvmu3037-{0}-jzc66wsi9d-jzc66wsi9d.gz
-C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\49wpfja8c0-{0}-b0omx6q2zt-b0omx6q2zt.gz
+C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\vpqvmu3037-{0}-1x3g2wm0ch-1x3g2wm0ch.gz
+C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\49wpfja8c0-{0}-kw1rs6mo1a-kw1rs6mo1a.gz
+C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\q9q0gic0ss-{0}-lz11bbh8bc-lz11bbh8bc.gz
+C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\qfdz7oa465-{0}-750ptzbj6z-750ptzbj6z.gz

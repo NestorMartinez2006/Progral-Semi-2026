@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "AlumnosController",
+    "ContainingType": "WebApp.Models.AlumnosController",
     "Method": "GetAlumno",
     "RelativePath": "api/Alumnos",
     "HttpMethod": "GET",
@@ -20,7 +20,7 @@
     ]
   },
   {
-    "ContainingType": "AlumnosController",
+    "ContainingType": "WebApp.Models.AlumnosController",
     "Method": "PostAlumno",
     "RelativePath": "api/Alumnos",
     "HttpMethod": "POST",
@@ -46,7 +46,7 @@
     ]
   },
   {
-    "ContainingType": "AlumnosController",
+    "ContainingType": "WebApp.Models.AlumnosController",
     "Method": "GetAlumno",
     "RelativePath": "api/Alumnos/{idalumno}",
     "HttpMethod": "GET",
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "ContainingType": "AlumnosController",
+    "ContainingType": "WebApp.Models.AlumnosController",
     "Method": "PutAlumno",
     "RelativePath": "api/Alumnos/{idalumno}",
     "HttpMethod": "PUT",
@@ -93,7 +93,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AlumnosController",
+    "ContainingType": "WebApp.Models.AlumnosController",
     "Method": "DeleteAlumno",
     "RelativePath": "api/Alumnos/{idalumno}",
     "HttpMethod": "DELETE",
@@ -109,7 +109,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AlumnosController",
+    "ContainingType": "WebApp.Models.AlumnosController",
     "Method": "BuscarAlumno",
     "RelativePath": "api/Alumnos/buscar",
     "HttpMethod": "GET",
