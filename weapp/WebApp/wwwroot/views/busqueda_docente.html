@@ -1,0 +1,122 @@
+﻿<form id="frmBusquedaDocente">
+    <div class="card theme-secondary" style="min-width:700px;">
+        <div class="card-header">
+            <div class="d-flex">
+                Busqueda de Docentes
+
+                <div class="ms-auto">
+                    <button data-form="busqueda_docente" type="button" class="btn-close" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table id="tblConsultaDocentes" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="7">
+                            <input type="search" class="form-control" placeholder="Buscar docentes por codigo, nombre"
+                                   name="txtBuscarDocente" id="txtBuscarDocente" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>CODIGO</th>
+                        <th>NOMBRE</th>
+                        <th>DIRECCION</th>
+                        <th>TELEFONO</th>
+                        <th>EMAIL</th>
+                        <th>ESCALAFON</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script>
+    (function () {
+        const txtBuscar = document.getElementById("txtBuscarDocente");
+        if (txtBuscar) {
+            txtBuscar.addEventListener("keyup", () => {
+                listarDocentes(txtBuscar.value);
+            });
+        }
+        listarDocentes("");
+    })();
+
+    async function listarDocentes(buscar = "") {
+        const tbody = document.querySelector("#tblConsultaDocentes > tbody");
+        if (!tbody) return;
+
+        const filtro = String(buscar ?? "").trim().toLowerCase();
+        const respuesta = await fetch("/api/Docentes", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        });
+
+        if (!respuesta.ok) {
+            tbody.innerHTML = "";
+            return;
+        }
+
+        const texto = await respuesta.text();
+        let docentes = texto ? JSON.parse(texto) : [];
+        if (!Array.isArray(docentes)) {
+            docentes = [];
+        }
+
+        if (filtro) {
+            docentes = docentes.filter(d => {
+                const cod = String(d.codigo ?? "").toLowerCase();
+                const nom = String(d.nombre ?? "").toLowerCase();
+                return cod.includes(filtro) || nom.includes(filtro);
+            });
+        }
+
+        let filas = "";
+        docentes.forEach(docente => {
+            const datosCodificados = encodeURIComponent(JSON.stringify(docente));
+            filas += `
+            <tr onClick='mostrarDatosDocente(JSON.parse(decodeURIComponent("${datosCodificados}")))'>
+                <td>${(docente.codigo ?? "").trim()}</td>
+                <td>${(docente.nombre ?? "").trim()}</td>
+                <td>${(docente.direccion ?? "").trim()}</td>
+                <td>${(docente.telefono ?? "").trim()}</td>
+                <td>${(docente.email ?? "").trim()}</td>
+                <td>${(docente.escalafon ?? "").trim()}</td>
+                <td><input type="button" onClick='eliminarDocente(JSON.parse(decodeURIComponent("${datosCodificados}")), event)' class="btn btn-outline-danger btn-sm" value="DEL" /></td>
+            </tr>
+        `;
+        });
+        tbody.innerHTML = filas;
+    }
+
+    async function eliminarDocente(docente, e) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        const nombreDocente = String(docente.nombre ?? "").trim();
+        if (confirm(`Esta seguro de eliminar ${nombreDocente}?`)) {
+            const id = docente.idDocente;
+            const respuesta = await fetch(`/api/Docentes/${id}`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" }
+            });
+            const datos = await respuesta.text();
+            if (!respuesta.ok || (datos && datos.length > 0)) {
+                alert(`Error ${datos || respuesta.status}`);
+                return;
+            }
+            const txtBuscar = document.getElementById("txtBuscarDocente");
+            listarDocentes(txtBuscar ? txtBuscar.value : "");
+        }
+    }
+
+    function mostrarDatosDocente(docente) {
+        if (typeof modificarDocente === "function") {
+            modificarDocente(docente);
+        }
+    }
+</script>

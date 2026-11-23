@@ -179,8 +179,10 @@ C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\bin\Debug\net10.0\tr\Microsoft.Cod
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\tvs3g1c5eq-{0}-ohzhckwe8g-ohzhckwe8g.gz
-C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\qfdz7oa465-{0}-cqv0hlvn4f-cqv0hlvn4f.gz
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\q9q0gic0ss-{0}-63vpyt4y5z-63vpyt4y5z.gz
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\49wpfja8c0-{0}-h65crvlbsn-h65crvlbsn.gz
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\vpqvmu3037-{0}-n79dtehhw3-n79dtehhw3.gz
 C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\txtqod5qyu-{0}-pzxz1v4hh3-pzxz1v4hh3.gz
+C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\qfdz7oa465-{0}-abm79l187b-abm79l187b.gz
+C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\0dema04z77-{0}-4yioyjaov4-4yioyjaov4.gz
+C:\Users\Nestor\Desktop\Progra I\weapp\WebApp\obj\Debug\net10.0\compressed\a5qy7s8hc3-{0}-946bb9lc77-946bb9lc77.gz

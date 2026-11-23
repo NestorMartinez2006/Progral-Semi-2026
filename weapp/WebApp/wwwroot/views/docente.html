@@ -1,0 +1,137 @@
+﻿<form id="frmDocente">
+    <div class="card theme-secondary" style="min-width:700px;">
+        <div class="card-header">
+            <div class="d-flex">
+                Administracion de Docentes
+
+                <div class="ms-auto">
+                    <button data-form="docente" type="button" class="btn-close" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row p-1">
+                <div class="col-3 col-md-2">CODIGO</div>
+                <div class="col-9 col-md-4">
+                    <input type="text" class="form-control" id="txtCodigoDocente" name="txtCodigoDocente" />
+                </div>
+            </div>
+            <div class="row p-1">
+                <div class="col-3 col-md-2">NOMBRE</div>
+                <div class="col-9 col-md-8">
+                    <input type="text" class="form-control" id="txtNombreDocente" name="txtNombreDocente" />
+                </div>
+            </div>
+            <div class="row p-1">
+                <div class="col-3 col-md-2">DIRECCION</div>
+                <div class="col-9 col-md-10">
+                    <input type="text" class="form-control" id="txtDireccionDocente" name="txtDireccionDocente" />
+                </div>
+            </div>
+            <div class="row p-1">
+                <div class="col-3 col-md-2">TELEFONO</div>
+                <div class="col-9 col-md-4">
+                    <input type="text" class="form-control" id="txtTelefonoDocente" name="txtTelefonoDocente" />
+                </div>
+            </div>
+            <div class="row p-1">
+                <div class="col-3 col-md-2">EMAIL</div>
+                <div class="col-9 col-md-6">
+                    <input type="text" class="form-control" id="txtEmailDocente" name="txtEmailDocente" />
+                </div>
+            </div>
+            <div class="row p-1">
+                <div class="col-3 col-md-2">Escalafon</div>
+                <div class="col-9 col-md-6">
+                    <select class="form-control" id="cboEscalafonDocente" name="cboEscalafonDocente">
+                        <option value="profesor">Profesor</option>
+                        <option value="ingeniero">Lic/Ing</option>
+                        <option value="maestria">Maestria</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="phd">PhD</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer fg-2">
+            <div class="col-12 text-center">
+                <input type="submit" class="btn btn-outline-primary" value="Guardar" />
+                <input type="reset" class="btn btn-outline-warnig" value="Nuevo" />
+                <input onclick="abrirVentana('busqueda_docente')" type="button" class="btn btn-outline-success" value="Buscar" />
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    var accion = "nuevo",
+        idDocente = 0;
+
+    frmDocente.addEventListener("submit", e => {
+        e.preventDefault();
+        guardarDocente();
+    });
+
+    frmDocente.addEventListener("reset", e => {
+        e.preventDefault();
+        nuevoDocente();
+    });
+
+    async function guardarDocente() {
+        let datos = {
+            codigo: txtCodigoDocente.value.trim(),
+            nombre: txtNombreDocente.value.trim(),
+            direccion: txtDireccionDocente.value.trim(),
+            telefono: txtTelefonoDocente.value.trim(),
+            email: txtEmailDocente.value.trim(),
+            escalafon: cboEscalafonDocente.value
+        },
+            url = "/api/Docentes",
+            method = "POST";
+
+        if (accion === "modificar") {
+            method = "PUT";
+            url = `/api/Docentes/${idDocente}`;
+            datos.idDocente = idDocente;
+        }
+
+        const respuesta = await fetch(url, {
+            method,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(datos)
+        });
+
+        if (!respuesta.ok) {
+            const errorTexto = await respuesta.text();
+            alert(`Error ${respuesta.status}: ${errorTexto}`);
+            return;
+        }
+
+        nuevoDocente();
+        if (typeof listarDocentes === "function") {
+            const txtBuscar = document.getElementById("txtBuscarDocente");
+            listarDocentes(txtBuscar ? txtBuscar.value : "");
+        }
+    }
+
+    function nuevoDocente() {
+        accion = "nuevo";
+        idDocente = 0;
+        txtCodigoDocente.value = "";
+        txtNombreDocente.value = "";
+        txtDireccionDocente.value = "";
+        txtTelefonoDocente.value = "";
+        txtEmailDocente.value = "";
+        cboEscalafonDocente.value = "profesor";
+    }
+
+    function modificarDocente(docente) {
+        accion = "modificar";
+        idDocente = docente.idDocente;
+        txtCodigoDocente.value = (docente.codigo ?? "").trim();
+        txtNombreDocente.value = (docente.nombre ?? "").trim();
+        txtDireccionDocente.value = (docente.direccion ?? "").trim();
+        txtTelefonoDocente.value = (docente.telefono ?? "").trim();
+        txtEmailDocente.value = (docente.email ?? "").trim();
+        cboEscalafonDocente.value = (docente.escalafon ?? "profesor").trim();
+    }
+</script>

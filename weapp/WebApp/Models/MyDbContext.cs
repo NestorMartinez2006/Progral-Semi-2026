@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using webapp.Models;
 
 namespace WebApp.Models
 {
@@ -10,6 +11,7 @@ namespace WebApp.Models
 
         public DbSet<Alumno> Alumnos { get; set; }
         public DbSet<Materia> Materias { get; set; }
+        public DbSet<Docente> Docentes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -17,6 +19,7 @@ namespace WebApp.Models
 
             modelBuilder.Entity<Alumno>().HasKey(a => a.idAlumno);
             modelBuilder.Entity<Materia>().HasKey(m => m.idMateria);
+            modelBuilder.Entity<Docente>().HasKey(a => a.idDocente);
         }
     }
 }
