@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "WebApp.Models.AlumnosController",
+    "ContainingType": "WebApp.Controllers.AlumnosController",
     "Method": "GetAlumno",
     "RelativePath": "api/Alumnos",
     "HttpMethod": "GET",
@@ -20,7 +20,7 @@
     ]
   },
   {
-    "ContainingType": "WebApp.Models.AlumnosController",
+    "ContainingType": "WebApp.Controllers.AlumnosController",
     "Method": "PostAlumno",
     "RelativePath": "api/Alumnos",
     "HttpMethod": "POST",
@@ -46,7 +46,7 @@
     ]
   },
   {
-    "ContainingType": "WebApp.Models.AlumnosController",
+    "ContainingType": "WebApp.Controllers.AlumnosController",
     "Method": "GetAlumno",
     "RelativePath": "api/Alumnos/{idalumno}",
     "HttpMethod": "GET",
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "ContainingType": "WebApp.Models.AlumnosController",
+    "ContainingType": "WebApp.Controllers.AlumnosController",
     "Method": "PutAlumno",
     "RelativePath": "api/Alumnos/{idalumno}",
     "HttpMethod": "PUT",
@@ -93,7 +93,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebApp.Models.AlumnosController",
+    "ContainingType": "WebApp.Controllers.AlumnosController",
     "Method": "DeleteAlumno",
     "RelativePath": "api/Alumnos/{idalumno}",
     "HttpMethod": "DELETE",
@@ -109,7 +109,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebApp.Models.AlumnosController",
+    "ContainingType": "WebApp.Controllers.AlumnosController",
     "Method": "BuscarAlumno",
     "RelativePath": "api/Alumnos/buscar",
     "HttpMethod": "GET",
@@ -125,6 +125,141 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[WebApp.Models.Alumno, WebApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MateriasController",
+    "Method": "GetMateria",
+    "RelativePath": "api/Materias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[WebApp.Models.Materia, WebApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MateriasController",
+    "Method": "PostMateria",
+    "RelativePath": "api/Materias",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "materia",
+        "Type": "WebApp.Models.Materia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WebApp.Models.Materia",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MateriasController",
+    "Method": "GetMateria",
+    "RelativePath": "api/Materias/{idmateria}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idmateria",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WebApp.Models.Materia",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MateriasController",
+    "Method": "PutMateria",
+    "RelativePath": "api/Materias/{idmateria}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idmateria",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      },
+      {
+        "Name": "materia",
+        "Type": "WebApp.Models.Materia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MateriasController",
+    "Method": "DeleteMateria",
+    "RelativePath": "api/Materias/{idmateria}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idmateria",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MateriasController",
+    "Method": "BuscarMateria",
+    "RelativePath": "api/Materias/buscar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "buscar",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[WebApp.Models.Materia, WebApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApp.Models;
 using webapp.Models;
+using WebApp.Models;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -17,17 +17,24 @@ public class MateriasController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Materia>>> GetMateria()
     {
-        return await _context.materias.ToListAsync();
+        return await _context.Materias.ToListAsync();
     }
 
     // GET: api/Materia/buscar
     [HttpGet("buscar")]
-    public async Task<ActionResult<IEnumerable<Materia>>> BuscarMateria([FromQuery] MateriaBusquedaParametros parametros)
+    public async Task<ActionResult<IEnumerable<Materia>>> BuscarMateria([FromQuery]
+        MateriaBusquedaParametros parametros)
     {
-        var consulta = _context.materias.AsQueryable();
+        var consulta = _context.Materias.AsQueryable();
         if (!string.IsNullOrEmpty(parametros.buscar))
         {
-            consulta = consulta.Where(Materia => Materia.nombre.Contains(parametros.buscar));
+            consulta = consulta.Where(materia => materia.nombre.Contains(parametros.buscar));
+        }
+        if (!string.IsNullOrEmpty(parametros.buscar) && consulta.Count() <= 0)
+        {
+            consulta = _context.Materias.AsQueryable();
+            //consulta = consulta.Where(materia => materia.codigo==int.Parse(parametros.buscar));
+            consulta = consulta.Where(materia => materia.codigo.ToString().Contains(parametros.buscar));
         }
         return await consulta.ToListAsync();
     }
@@ -36,7 +43,7 @@ public class MateriasController : ControllerBase
     [HttpGet("{idmateria}")]
     public async Task<ActionResult<Materia>> GetMateria(int idmateria)
     {
-        var materia = await _context.materias.FindAsync(idmateria);
+        var materia = await _context.Materias.FindAsync(idmateria);
 
         if (materia == null)
         {
@@ -74,7 +81,7 @@ public class MateriasController : ControllerBase
             }
         }
 
-        return NoContent();
+        return CreatedAtAction("GetMateria", new { idmateria = materia.idMateria }, materia);
     }
 
     // POST: api/Materia
@@ -82,7 +89,7 @@ public class MateriasController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Materia>> PostMateria(Materia materia)
     {
-        _context.materias.Add(materia);
+        _context.Materias.Add(materia);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetMateria", new { idmateria = materia.idMateria }, materia);
@@ -92,13 +99,13 @@ public class MateriasController : ControllerBase
     [HttpDelete("{idmateria}")]
     public async Task<IActionResult> DeleteMateria(int? idmateria)
     {
-        var materia = await _context.materias.FindAsync(idmateria);
+        var materia = await _context.Materias.FindAsync(idmateria);
         if (materia == null)
         {
             return NotFound();
         }
 
-        _context.materias.Remove(materia);
+        _context.Materias.Remove(materia);
         await _context.SaveChangesAsync();
 
         return NoContent();
@@ -106,6 +113,6 @@ public class MateriasController : ControllerBase
 
     private bool MateriaExists(int? idmateria)
     {
-        return _context.materias.Any(e => e.idMateria == idmateria);
+        return _context.Materias.Any(e => e.idMateria == idmateria);
     }
 }

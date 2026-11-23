@@ -7,12 +7,11 @@ namespace WebApp.Models
     public class Materia
     {
         [Key]
-        [Column("id_Materia")]
+        [Column("idMateria")]
         public int idMateria { get; set; }
-
         public int codigo { get; set; }
         public string nombre { get; set; } = string.Empty;
-        public string? uv { get; set; }
-       
+        public int uv { get; set; }
+
     }
 }

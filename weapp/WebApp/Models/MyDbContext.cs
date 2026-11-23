@@ -1,24 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebApp.Models;
 
-namespace webapp.Models
+namespace WebApp.Models
 {
     public class MyDbContext : DbContext
-        {
+    {
         public MyDbContext() { }
 
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
 
         public DbSet<Alumno> Alumnos { get; set; }
-        public DbSet<Materia> materias { get; set; }
-      
+        public DbSet<Materia> Materias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Alumno>().HasKey(a => a.idAlumno);
-            modelBuilder.Entity<Materia>().HasKey(a => a.idMateria);
+            modelBuilder.Entity<Materia>().HasKey(m => m.idMateria);
         }
     }
 }

@@ -1,0 +1,131 @@
+﻿<form id="frmBusquedaMateria">
+    <div class="card theme-secondary" style="min-width:700px;">
+        <div class="card-header">
+            <div class="d-flex">
+                Busqueda de Materias
+                <div class="ms-auto">
+                    <button data-form="busqueda_materia" type="button" class="btn-close" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table id="tblConsultaMaterias" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="4">
+                            <input type="search" class="form-control" placeholder="Buscar materias por codigo, nombre"
+                                   name="txtBuscarMateria" id="txtBuscarMateria" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>CODIGO</th>
+                        <th>NOMBRE</th>
+                        <th>UV</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script>
+    (function () {
+        const inputBuscar = document.getElementById("txtBuscarMateria");
+        if (inputBuscar) {
+            inputBuscar.addEventListener("keyup", () => listarMaterias(inputBuscar.value));
+        }
+        listarMaterias("");
+    })();
+
+    async function listarMaterias(buscar = "") {
+        const tbody = document.querySelector("#tblConsultaMaterias > tbody");
+        if (!tbody) return;
+
+        const filtro = String(buscar ?? "").trim();
+        const termino = encodeURIComponent(filtro);
+        const rutas = [
+            `/api/Materias/buscar?buscar=${termino}`,
+            `/api/Materia/buscar?buscar=${termino}`
+        ];
+
+        let materias = [];
+        for (const url of rutas) {
+            const resp = await fetch(url, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" }
+            });
+            if (resp.ok) {
+                const texto = await resp.text();
+                materias = texto ? JSON.parse(texto) : [];
+                break;
+            }
+        }
+
+        if (!Array.isArray(materias)) {
+            materias = [];
+        }
+
+        if (filtro) {
+            const minuscula = filtro.toLowerCase();
+            materias = materias.filter(m => {
+                const cod = String(m.codigo ?? m.Codigo ?? "").toLowerCase();
+                const nom = String(m.nombre ?? m.Nombre ?? "").toLowerCase();
+                return cod.includes(minuscula) || nom.includes(minuscula);
+            });
+        }
+
+        let filas = "";
+        materias.forEach(materia => {
+            const payload = encodeURIComponent(JSON.stringify(materia));
+            filas += `
+                <tr onclick="mostrarDatosMateria(JSON.parse(decodeURIComponent('${payload}')))">
+                    <td>${materia.codigo ?? materia.Codigo ?? ""}</td>
+                    <td>${(materia.nombre ?? materia.Nombre ?? "").trim()}</td>
+                    <td>${materia.uv ?? materia.Uv ?? ""}</td>
+                    <td>
+                        <input type="button"
+                               onclick="eliminarMateria(JSON.parse(decodeURIComponent('${payload}')), event)"
+                               class="btn btn-outline-danger btn-sm"
+                               value="DEL" />
+                    </td>
+                </tr>
+            `;
+        });
+        tbody.innerHTML = filas;
+    }
+
+    async function eliminarMateria(materia, e) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        const nombre = (materia.nombre ?? materia.Nombre ?? "").trim();
+        if (confirm(`Esta seguro de eliminar ${nombre}?`)) {
+            const id = materia.idMateria ?? materia.id_Materia ?? materia.IdMateria;
+            let respuesta = await fetch(`/api/Materias/${id}`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" }
+            });
+            if (respuesta.status === 404) {
+                respuesta = await fetch(`/api/Materia/${id}`, {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" }
+                });
+            }
+            const datos = await respuesta.text();
+            if (datos && datos.length > 0) {
+                alert(`Error ${datos}`);
+                return;
+            }
+            const inputBuscar = document.getElementById("txtBuscarMateria");
+            listarMaterias(inputBuscar ? inputBuscar.value : "");
+        }
+    }
+
+    function mostrarDatosMateria(materia) {
+        if (typeof modificarMateria === "function") {
+            modificarMateria(materia);
+        }
+    }
+</script>

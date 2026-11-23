@@ -31,50 +31,87 @@
         </div>
     </div>
 </form>
-
 <script>
-    listarAlumnos();
+    (function () {
+        const inputBuscar = document.getElementById("txtBuscarAlumno");
+        if (inputBuscar) {
+            inputBuscar.addEventListener("keyup", () => listarAlumnos(inputBuscar.value));
+        }
+        listarAlumnos("");
+    })();
 
-    document.getElementById('txtBuscarAlumno').addEventListener('keyup', e => {
-        listarAlumnos(e.target.value);
-    });
+    async function listarAlumnos(buscar = "") {
+        const tbody = document.querySelector("#tblConsultaAlumnos > tbody");
+        if (!tbody) return;
 
-    async function listarAlumnos(buscar = '') {
-        let alumnos = await obtenerAlumnos(buscar),
-            filas = '';
+        const termino = encodeURIComponent(String(buscar ?? "").trim());
+        let resp = await fetch(`/api/Alumnos/buscar?buscar=${termino}`);
+        if (resp.status === 404) {
+            resp = await fetch(`/api/Alumnoes/buscar?buscar=${termino}`);
+        }
+
+        let alumnos = [];
+        if (resp.ok) {
+            const texto = await resp.text();
+            alumnos = texto ? JSON.parse(texto) : [];
+        }
+
+        if (!Array.isArray(alumnos)) {
+            alumnos = [];
+        }
+
+        let filas = "";
         alumnos.forEach(alumno => {
+            const payload = encodeURIComponent(JSON.stringify(alumno));
             filas += `
-                <tr onClick='mostrarDatosAlumno(${JSON.stringify(alumno)})'>
-                    <td>${alumno.codigo}</td>
-                    <td>${alumno.nombre}</td>
-                    <td>${alumno.direccion}</td>
-                    <td>${alumno.telefono}</td>
-                    <td>${alumno.email}</td>
-                    <td><input type="button" onClick='eliminarAlumno(${JSON.stringify(alumno)}, event)' class="btn btn-outline-danger btn-sm" value="DEL" /></td>
+                <tr onclick="mostrarDatosAlumno(JSON.parse(decodeURIComponent('${payload}')))">
+                    <td>${alumno.codigo ?? alumno.Codigo ?? ""}</td>
+                    <td>${alumno.nombre ?? alumno.Nombre ?? ""}</td>
+                    <td>${alumno.direccion ?? alumno.Direccion ?? ""}</td>
+                    <td>${alumno.telefono ?? alumno.Telefono ?? ""}</td>
+                    <td>${alumno.email ?? alumno.Email ?? ""}</td>
+                    <td>
+                        <input type="button"
+                               onclick="eliminarAlumno(JSON.parse(decodeURIComponent('${payload}')), event)"
+                               class="btn btn-outline-danger btn-sm"
+                               value="DEL" />
+                    </td>
                 </tr>
             `;
         });
-        document.querySelector("#tblConsultaAlumnos > tbody").innerHTML = filas;
+        tbody.innerHTML = filas;
     }
 
     async function eliminarAlumno(alumno, e) {
-        e.stopPropagation();
-        e.preventDefault();
-
-        if (confirm(`Esta seguro de eliminar ${alumno.nombre.trim()}?`)) {
-            const respuesta = await fetch(`/api/Alumnos/${alumno.idAlumno}`, {
-                method: 'DELETE',
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        if (confirm(`Esta seguro de eliminar ${(alumno.nombre ?? alumno.Nombre ?? "").trim()}?`)) {
+            const id = alumno.idAlumno ?? alumno.IdAlumno;
+            let respuesta = await fetch(`/api/Alumnos/${id}`, {
+                method: "DELETE",
                 headers: { "Content-Type": "application/json" }
-            }), datos = await respuesta.text();
+            });
+            if (respuesta.status === 404) {
+                respuesta = await fetch(`/api/Alumnoes/${id}`, {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" }
+                });
+            }
+            const datos = await respuesta.text();
             if (datos && datos.length > 0) {
                 alert(`Error ${datos}`);
                 return;
             }
-            listarAlumnos(document.getElementById('txtBuscarAlumno').value || '');
+            const inputBuscar = document.getElementById("txtBuscarAlumno");
+            listarAlumnos(inputBuscar ? inputBuscar.value : "");
         }
     }
 
     function mostrarDatosAlumno(alumno) {
-        modificarAlumno(alumno);
+        if (typeof modificarAlumno === "function") {
+            modificarAlumno(alumno);
+        }
     }
 </script>

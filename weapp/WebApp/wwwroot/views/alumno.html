@@ -1,9 +1,8 @@
-﻿﻿<form id="frmAlumno">
+﻿<form id="frmAlumno">
     <div class="card theme-secondary" style="min-width:700px;">
         <div class="card-header">
             <div class="d-flex">
                 Administracion de Alumnos
-
                 <div class="ms-auto">
                     <button data-form="alumno" type="button" class="btn-close" aria-label="Close"></button>
                 </div>
@@ -43,49 +42,76 @@
         </div>
         <div class="card-footer fg-2">
             <div class="col-12 text-center">
-                <input type="submit" class="btn btn-outline-primary" value="Guardar" />
-                <input type="reset" class="btn btn-outline-warnig" value="Nuevo" />
+                <input type="submit" id="btnGuardarAlumno" class="btn btn-outline-primary" value="Guardar" />
+                <input type="reset" class="btn btn-outline-warning" value="Nuevo" />
                 <input onclick="abrirVentana('busqueda_alumno')" type="button" class="btn btn-outline-success" value="Buscar" />
             </div>
         </div>
     </div>
 </form>
 <script>
-    var accion = 'nuevo',
+    var accion = "nuevo",
         idAlumno = 0;
-    frmAlumno.addEventListener('submit', e => {
+
+    document.getElementById("frmAlumno").addEventListener("submit", e => {
         e.preventDefault();
         guardarAlumno();
     });
-    frmAlumno.addEventListener('reset', e => {
+
+    document.getElementById("frmAlumno").addEventListener("reset", e => {
         e.preventDefault();
         nuevoAlumno();
     });
+
     async function guardarAlumno() {
-        let datos = {
-            codigo: txtCodigoAlumno.value,
-            nombre: txtNombreAlumno.value,
-            direccion: txtDireccionAlumno.value,
-            telefono: txtTelefonoAlumno.value,
-            email: txtEmailAlumno.value,
-        },
-            url = 'https://localhost:44312/api/Alumnos',
-            method = 'POST';
-        if (accion == 'modificar') {
-            method = 'PUT';
-            url = `https://localhost:44312/api/Alumnos/${idAlumno}`;
-            datos.idAlumno = idAlumno;
-        }
-        const respuesta = await fetch(url, {
-            method,
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(datos)
-        }), alumno = await respuesta.json();
-        if ((alumno?.idAlumno || 0) > 0) {
-            nuevoAlumno();
-            listarAlumnos(txtBuscarAlumno.value || '');
+        const btnGuardar = document.getElementById("btnGuardarAlumno");
+        if (btnGuardar) btnGuardar.disabled = true;
+
+        try {
+            const datos = {
+                codigo: txtCodigoAlumno.value,
+                nombre: txtNombreAlumno.value,
+                direccion: txtDireccionAlumno.value,
+                telefono: txtTelefonoAlumno.value,
+                email: txtEmailAlumno.value
+            };
+
+            let url = "/api/Alumnoes";
+            let method = "POST";
+
+            if (accion === "modificar") {
+                method = "PUT";
+                url = `/api/Alumnoes/${idAlumno}`;
+                datos.idAlumno = idAlumno;
+            }
+
+            const respuesta = await fetch(url, {
+                method,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(datos)
+            });
+
+            if (!respuesta.ok) {
+                const msg = await respuesta.text();
+                alert(`Error ${respuesta.status}: ${msg}`);
+                return;
+            }
+
+            const alumno = await respuesta.json();
+            const guardadoId = alumno?.idAlumno ?? alumno?.IdAlumno ?? 0;
+
+            if (guardadoId > 0 || method === "PUT") {
+                nuevoAlumno();
+                if (typeof listarAlumnos === "function") {
+                    const buscarVal = document.getElementById("txtBuscarAlumno")?.value || "";
+                    listarAlumnos(buscarVal);
+                }
+            }
+        } finally {
+            if (btnGuardar) btnGuardar.disabled = false;
         }
     }
+
     function nuevoAlumno() {
         accion = "nuevo";
         idAlumno = 0;
@@ -95,13 +121,14 @@
         txtTelefonoAlumno.value = "";
         txtEmailAlumno.value = "";
     }
+
     function modificarAlumno(alumno) {
         accion = "modificar";
-        idAlumno = alumno.idAlumno;
-        txtCodigoAlumno.value = alumno.codigo;
-        txtNombreAlumno.value = alumno.nombre;
-        txtDireccionAlumno.value = alumno.direccion;
-        txtTelefonoAlumno.value = alumno.telefono;
-        txtEmailAlumno.value = alumno.email;
+        idAlumno = alumno.idAlumno ?? alumno.IdAlumno;
+        txtCodigoAlumno.value = alumno.codigo ?? alumno.Codigo ?? "";
+        txtNombreAlumno.value = alumno.nombre ?? alumno.Nombre ?? "";
+        txtDireccionAlumno.value = alumno.direccion ?? alumno.Direccion ?? "";
+        txtTelefonoAlumno.value = alumno.telefono ?? alumno.Telefono ?? "";
+        txtEmailAlumno.value = alumno.email ?? alumno.Email ?? "";
     }
 </script>
